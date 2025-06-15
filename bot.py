@@ -8,8 +8,10 @@ from aiogram.dispatcher import FSMContext
 from aiogram.contrib.fsm_storage.memory import MemoryStorage
 from aiogram.dispatcher.filters.state import State, StatesGroup
 from PIL import Image, ImageDraw
+from dotenv import load_dotenv
+load_dotenv()
 
-TOKEN = '7903858826:AAEt6-dcWHjjZ8OvvZhi8iPYaN5mfTyDeqo'
+TOKEN = os.getenv("BOT_TOKEN")
 
 bot = Bot(token=TOKEN)
 dp = Dispatcher(bot, storage=MemoryStorage())
