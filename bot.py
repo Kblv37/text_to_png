@@ -180,5 +180,18 @@ async def decode_get_size(msg: types.Message, state: FSMContext):
     await msg.answer("🔓 Расшифрованный текст:\n\n" + result)
     await state.finish()
 
+from flask import Flask
+import threading
+
+app = Flask(__name__)
+
+@app.route('/')
+def index():
+    return 'Bot is running!'
+
+def run_flask():
+    app.run(host='0.0.0.0', port=8080)
+
 if __name__ == '__main__':
+    threading.Thread(target=run_flask).start()
     executor.start_polling(dp, skip_updates=True)
